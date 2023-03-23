@@ -1,4 +1,4 @@
-## [0.0.2] - 2022-12-25
+## [0.0.2] - Unreleased
 ### Fixed
 - _APK1:_ Fixed test message 1
 

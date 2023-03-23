@@ -3,22 +3,29 @@ on:
   push:
     tags:
       - '*'
+
 jobs:
   create_release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Get latest tag name
-        id: tag
-        run: echo ::set-output name=tag::$(git describe --tags --abbrev=0)
-      - name: Get latest changelog entry
-        id: changelog
-        run: echo ::set-output name=changelog::$(awk -v tag="$(git describe --tags --abbrev=0)" '/## \[Unreleased\]/{flag=1;next}/## \[/{exit}flag' CHANGELOG.md)
+        id: get_tag_name
+        run: echo ::set-output name=tag_name::$(git describe --tags --abbrev=0 HEAD)
+      - name: Get changelog entry
+        id: get_changelog_entry
+        run: |
+          tag_name=$(git describe --tags --abbrev=0 HEAD)
+          body=$(awk -v tag="$tag_name" '/## \[Unreleased\]/{flag=1;next}/## \[/{exit}flag' CHANGELOG.md | sed -e 's/^## \[//' -e 's/\].*$//')
+          title=$(awk -v tag="$tag_name" '/## \[Unreleased\]/{flag=1;next}/## \[/{exit}flag' CHANGELOG.md | head -n 1 | sed -e 's/^## \[//' -e 's/\].*$//')
+          echo "::set-output name=title::$title"
+          echo "::set-output name=body::$body"
       - name: Create release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.tag.outputs.tag }}
-          release_name: Release ${{ steps.tag.outputs.tag }}
-          body: ${{ steps.changelog.outputs.changelog }}
+          tag_name: ${{ steps.get_tag_name.outputs.tag_name }}
+          release_name: ${{ steps.get_changelog_entry.outputs.title }}
+          body: ${{ steps.get_changelog_entry.outputs.body }}
