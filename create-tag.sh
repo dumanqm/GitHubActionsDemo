@@ -1,13 +1,14 @@
 #!/bin/bash
 
-# Get the latest changelog entry from the CHANGELOG.md file
-latest_entry=$(sed -n '/## \[.*\] -/,$p' CHANGELOG.md | sed '1,/^$/d')
+latest_version=$1
+echo "Version: $latest_version"
 
-# Extract the version number from the latest entry
-version=$(echo "$latest_entry" | sed -n 's/^## \[\(.*\)\].*/\1/p' | head -n 1)
+# Get the latest changelog entry from the CHANGELOG.md file
+latest_entry=$(awk '/## \['"$latest_version"'\]/{flag=1;next}/## \[/{exit}flag' CHANGELOG.md | sed -e 's/^## //' -e '/^[[:space:]]*$/d' | sed 's/\n/\\n/g')
+echo "Entry: $latest_entry"
 
 # Create the new tag
-git tag -a "$version" -m "Version $version"
+git tag -a "$latest_version" -m "Version $latest_entry"
 
 # Push the new tag to the remote repository
-git push origin "$version"
+git push origin "$latest_version"
