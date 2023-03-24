@@ -15,7 +15,7 @@ tagMessage=$NEWLINE$latest_entry
 echo "tagMessage: $tagMessage"
 
 # Create the new tag
-#git tag -a "$latest_version" -m "$tagMessage"
+git tag -a "$latest_version" -m "$tagMessage"
 
 # Push the new tag to the remote repository
-#git push origin "$latest_version"
+git push origin "$latest_version"
