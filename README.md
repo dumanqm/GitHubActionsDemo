@@ -17,6 +17,7 @@ Quickstart for [GitHub Actions](https://docs.github.com/en/actions/quickstart "t
 A `create-tag.sh` script was created to automate Tag creation. This script needs to be called for a specific version to create release.
 
 For the given CHANGELOG.md file content as below.
+
 `## [1.0.0] - 2023-03-25`
 `### Added`
 `- New feature E`
