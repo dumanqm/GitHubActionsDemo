@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.6] - 2023-03-25
+
+### Fixed
+
+- Fixed tag name
+- Fixed tag message
+
+### Added
+
+- Added create-release.yml to get release details from tag
+- Added create-tag.sh to create tag based passed version number
+- Added feature A
+
+### Changed
+
+- Refactored module A
+- Refactored module B
+
 ## [0.1.5] - 2023-03-25
 
 ### Updated
