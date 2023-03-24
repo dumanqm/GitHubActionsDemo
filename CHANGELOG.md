@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0] - 2023-03-25
+
+### Added
+
+- New feature E
+- New feature R
+- New feature C
+
+### Changed
+
+- Refactored module A
+- Refactored module N
+
+### Fixed
+
+- Fixed module D
+- Fixed module M
+- Fixed module N
+
 ## [0.1.9] - 2023-03-25
 
 ### Fixed
