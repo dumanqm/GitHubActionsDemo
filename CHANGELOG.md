@@ -1,21 +1,45 @@
-## [0.0.2] - Unreleased
-### Fixed
-- _APK1:_ Fixed test message 1
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+## [Unreleased]
 
 ### Added
-- _APK2:_ Added test message 2
+
+- New feature A
 
 ### Changed
-- _APK3:_ Changed test message 3
 
-### Removed
-- _APK4:_ Removed test message 4
+- Refactored module B
 
-## [0.0.1] - 2022-11-25
-### Fixed
-- _APK5:_ Fixed test message 5
+## [1.0.0] - 2022-03-01
 
 ### Added
-- _APK6:_ Added test message 6
 
-## [0.0.0] - 2022-10-25
+- New feature X
+
+### Fixed
+
+- Bug in module Y
+
+## [0.1.0] - 2022-02-15
+
+### Added
+
+- New feature Y
+
+### Changed
+
+- Improved module X
+
+## [0.0.2] - 2022-02-01
+
+### Fixed
+
+- Bug in module Z
+
+## [0.0.1] - 2022-01-15
+
+### Added
+
+- Initial release

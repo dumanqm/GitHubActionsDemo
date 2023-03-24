@@ -17,8 +17,8 @@ jobs:
         id: get_changelog_entry
         run: |
           tag_name=$(git describe --tags --abbrev=0 HEAD)
-          body=$(awk -v tag="$tag_name" '/## \[Unreleased\]/{flag=1;next}/## \[/{exit}flag' CHANGELOG.md | sed -e 's/^## \[//' -e 's/\].*$//')
-          title=$(awk -v tag="$tag_name" '/## \[Unreleased\]/{flag=1;next}/## \[/{exit}flag' CHANGELOG.md | head -n 1 | sed -e 's/^## \[//' -e 's/\].*$//')
+          body=$(awk -v tag="$tag_name" '/## \[Unreleased\]/{flag=1;next}/## \[/{exit}flag' CHANGELOG.md | sed -e 's/^## //' -e 's/^.*\*\*//' -e 's/- \[.*\]//' -e '/^[[:space:]]*$/d')
+          title=$(awk -v tag="$tag_name" '/## \[Unreleased\]/{flag=1;next}/## \[/{exit}flag' CHANGELOG.md | head -n 1 | sed -e 's/^## //' -e 's/^.*\*\*//' -e 's/- \[.*\]//' -e '/^[[:space:]]*$/d')
           echo "::set-output name=title::$title"
           echo "::set-output name=body::$body"
       - name: Create release
