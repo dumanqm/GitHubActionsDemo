@@ -17,15 +17,15 @@ jobs:
         id: get_changelog_entry
         run: |
           tag_name=$(git describe --tags --abbrev=0 HEAD)
-          body=$(awk '/## \['"$title"'\]/{flag=1;next}/## \[/{exit}flag' "$changelogDir" | sed -e '/##/d' | sed -e 's/^## //' -e '/^[[:space:]]*$/d' | sed 's/\n/\\n/g')
-          title=$(git tag -n --format='%(contents)' $(git describe --tags --abbrev=0 HEAD))
-          echo "::set-output name=title::$title"
+          body=$(awk '/## \['"$tag_name"'\]/{flag=1;next}/## \[/{exit}flag' "$changelogDir" | sed -e '/##/d' | sed -e 's/^## //' -e '/^[[:space:]]*$/d' | sed 's/\n/\\n/g')
+          tag_date=$(grep -m 1 "^## \[\d.\d.\d\]" "$changelogDir" | awk '{print $4}')
           echo "::set-output name=body::$body"
+          echo "::set-output name=$tag_date::$tag_date"
       - name: Create release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.get_tag_name.outputs.tag_name }}
-          release_name: ${{ steps.get_tag_name.outputs.tag_name }}
+          release_name: ${{ steps.get_tag_name.outputs.tag_name }} ${{ steps.get_changelog_entry.outputs.$tag_date }}
           body: ${{ steps.get_changelog_entry.outputs.body }}
