@@ -4,4 +4,4 @@ A demo repo to create GitHub Action/script to automate the process of creating a
 
 Quickstart for GitHub Actions: https://docs.github.com/en/actions/quickstart
 
-Create a new TAG script: ./create-tag.sh
+Create a new TAG script: `./.github/workflows/create-tag.sh 1.0.0`
