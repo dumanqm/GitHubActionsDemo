@@ -18,30 +18,29 @@ A `create-tag.sh` script was created to automate Tag creation. This script needs
 
 For the given CHANGELOG.md file content as below.
 
-`## [1.0.0] - 2023-03-25`
-`### Added`
-`- New feature E`
-`- New feature R`
-`- New feature C`
-`### Changed`
-`- Refactored module A`
-`- Refactored module N`
-`### Fixed`
-`- Fixed module D`
-`- Fixed module M`
-`- Fixed module N`
+> ## [1.0.0] - 2023-03-25
+> ### Added
+> - New feature E
+> - New feature R
+> - New feature C
+> ### Changed
+> - Refactored module A
+> - Refactored module N
+> ### Fixed
+> - Fixed module D
+> - Fixed module M
+> - Fixed module N`
 
 All you have to do is run `./.github/workflows/create-tag.sh 1.0.0`, then it creates a new **Release 1.0.0** as shown below.
 
-**1.0.0 Latest**
-
-- New feature E
-- New feature R
-- New feature C
-- Refactored module A
-- Refactored module N
-- Fixed module D
-- Fixed module M
-- Fixed module N
+**1.0.0** Latest
+> - New feature E
+> - New feature R
+> - New feature C
+> - Refactored module A
+> - Refactored module N
+> - Fixed module D
+> - Fixed module M
+> - Fixed module N
 
 The aforementioned release can be checked from [this](https://github.com/dumanqm/GitHubActionsDemo/releases/tag/1.0.0 "this") link.
