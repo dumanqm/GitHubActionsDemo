@@ -17,7 +17,7 @@ jobs:
         id: get_changelog_entry
         run: |
           tag_name=$(git describe --tags --abbrev=0 HEAD)
-          body=$(git tag -n --format='%(contents)' $(git describe --tags --abbrev=0 HEAD))
+          body=$(awk '/## \['"$title"'\]/{flag=1;next}/## \[/{exit}flag' "$changelogDir" | sed -e '/##/d' | sed -e 's/^## //' -e '/^[[:space:]]*$/d' | sed 's/\n/\\n/g')
           title=$(git tag -n --format='%(contents)' $(git describe --tags --abbrev=0 HEAD))
           echo "::set-output name=title::$title"
           echo "::set-output name=body::$body"
