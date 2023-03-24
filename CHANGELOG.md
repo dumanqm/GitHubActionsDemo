@@ -12,7 +12,7 @@ All notable changes to this project will be documented in this file.
 
 - Refactored module B
 
-## [1.0.0] - 2022-03-01
+## [0.1.1] - 2022-03-01
 
 ### Added
 
