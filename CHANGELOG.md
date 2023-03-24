@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Updated
 
 - Updated create-release.yml to get release details from tag
-  Update create-tag.sh to create tag based passed version number
+- Update create-tag.sh to create tag based passed version number
 - Updated feature A
 
 ### Changed
